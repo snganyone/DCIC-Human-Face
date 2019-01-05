@@ -157,6 +157,7 @@ else{
           <label class="form-check-label" for = "checkbox"></label>
         </th> -->
         <th scope="col" class="text-center"></th>
+        <th scope="col" class="text-center"></th>
         <th class="text-center">Parcel ID <button class="btn btn-link" onclick="sort()"><i class="fas fa-sort"></i></button></th>
         <th scope="col" class="text-center">Block Number <button class="btn btn-link" onclick="sort()"><i class="fas fa-sort"></i></button></th>
         <th scope="col" class="text-center">Parcel Number <button class="btn btn-link" onclick="sort()"><i class="fas fa-sort"></i></button></th>
@@ -167,6 +168,11 @@ else{
     <tbody>
       <?php foreach($row as $rows){ ?>
       <tr>
+        <td class="pr-md-3 pr-5 text-center"><button class="btn btn-danger">
+          <span style="color: white;">
+          <i class="fas fa-trash-alt"></i>
+          </span>
+          </td>
         <td class="pr-md-3 pr-5 text-center">
           <a href="edit.php?pid=<?=$rows['parcel_id']?>"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
         </td>
