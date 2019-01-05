@@ -55,5 +55,8 @@ if(isset($_POST['add'])){
 if(isset($_POST['delete'])){
   $sql = "DELETE FROM humanface.parcels WHERE parcel_id = '$parcel_id'";
   $query = pg_query($connect, $sql);
+  if($query){
+    echo "Record Successfully deleted!";
+  }
 }
  ?>

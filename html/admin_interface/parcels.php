@@ -168,13 +168,20 @@ else{
     <tbody>
       <?php foreach($row as $rows){ ?>
       <tr>
-        <td class="pr-md-3 pr-5 text-center"><button class="btn btn-danger">
-          <span style="color: white;">
-          <i class="fas fa-trash-alt"></i>
-          </span>
+        <form action="data.php" method="post">
+          <td class="pr-md-3 pr-5 text-center">
+            <a href="edit.php?pid=<?=$rows['parcel_id']?>">
+            <button class="btn btn-danger" type="submit" name="delete" value="delete">
+            </a>
+            <span style="color: white;">
+            <i class="fas fa-trash-alt"></i>
+            </span>
           </td>
+        </form>
         <td class="pr-md-3 pr-5 text-center">
-          <a href="edit.php?pid=<?=$rows['parcel_id']?>"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
+          <a href="edit.php?pid=<?=$rows['parcel_id']?>">
+          <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+          </a>
         </td>
         <td class="text-center"><?php echo $rows['parcel_id'] . "\n"; ?></td>
         <td class="text-center"><?php echo $rows['block_no'] . "\n"; ?></td>
