@@ -27,14 +27,6 @@ $query = 'SELECT * FROM humanface.parcels';
 $par = pg_query($connect, $query);
 $row = pg_fetch_all($par);
 
-//Obtain Selected Parcel Information (Parcel ID)
-
-if($_GET['p_id']){
-  $u = "SELECT * FROM humanface.parcels WHERE parcel_id = " . $_GET['p_id'];
-  $pquery = pg_query($connect, $u);
-  $r = pg_fetch_assoc($pquery);
-}
-
 //Processed passed pid variable from parcels.php page
 /*If a user selects a row from the parcels table to delete
 this condition will run
@@ -45,6 +37,8 @@ if($p){
   $ip = pg_query($connect, $i);
   $ia = pg_fetch_assoc($ip);
 }
+//Query Address Information
+
 ?>
 
 </head>
@@ -53,12 +47,16 @@ if($p){
   <div class="section-header text-center">
   <img src="../images/LOGO.png" alt="DCIC Logo">
   </div>
+
   <div class="alert alert-danger text-center" role="alert">
   Selecting the Delete button will permanently remove the record from the system.
   </div>
-  <form method="post" action="data.php" name="form" id="form">
-  <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$ia['parcel_id']?>">
 
+  <!-- PHP Form -->
+
+  <form method="post" action="data.php" name="form" id="form" style="margin: 0 auto; width: 80%;">
+  <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$ia['parcel_id']?>">
+    <h2 class="text-center">Parcel Information</h2>
     <div class="form-row">
     <div class="form-group col-sm-2">
     <label class="float-md-center" for="Parcel ID">Parcel ID</label>
@@ -76,12 +74,18 @@ if($p){
     <label class="float-md-center" for="ward_number">Ward Number</label>
     <input class="form-control" type="text" id="ward_number" name="ward_number" value="<?=$ia['ward_no']?>">
     </div>
-    </div>
-
-    <div class="form-group">
+    <div class="form-group col-sm-2">
     <label class="float-md-center" for="land_use">Land Use</label>
     <input class="form-control" type="text" id="land_use" name="land_use" value="<?=$ia['land_use']?>">
     </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>Street Number</label>
+        <input class="form-control">
+      </div>
+    </div>
+
     <button type="submit" class="btn btn-danger" name="delete" id="delete">Delete</button>
     </form>
 
