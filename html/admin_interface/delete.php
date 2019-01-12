@@ -66,7 +66,7 @@ $e = pg_query($connect, $event);
   <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$ia['parcel_id']?>">
     <h2 class="text-center">Parcel Information</h2>
 
-    <div style="border-style: solid;">
+    <div style="border: 1px solid; border-radius: 5px;">
     <div class="form-row">
     <div class="form-group col-sm-2">
     <label class="float-md-center" for="Parcel ID">Parcel ID</label>
@@ -99,6 +99,23 @@ $e = pg_query($connect, $event);
         <label>Street Name</label>
         <input class="form-control" type="text" id="st_num" name="st_num">
       </div>
+    </div>
+  </div>
+
+  <h2 class="text-center">Event Information</h2>
+
+  <div class="form-row">
+    <div class="form-group col-sm-4">
+      <label>Type</label>
+      <input class="form-control" type="text" id="type" name="type">
+    </div>
+    <div class="form-group col-sm-4">
+      <label>Date</label>
+      <input class="form-control" type="text" id="date" name="date">
+    </div>
+    <div class="form-group col-sm-4">
+      <label>Price</label>
+      <input class="form-control" type="text" id="price" name="price">
     </div>
   </div>
 
