@@ -22,10 +22,6 @@ if (!$connect){
 else{
   //echo "Successfully connected to database:" . " " .pg_dbname() . " on " . pg_host();
 }
-//Querying Parcels Table information
-$query = 'SELECT * FROM humanface.parcels';
-$par = pg_query($connect, $query);
-$row = pg_fetch_all($par);
 
 //Processed passed pid variable from parcels.php page
 /*If a user selects a row from the parcels table to delete
@@ -47,7 +43,8 @@ $a = pg_query($connect, $aquery);
 
 //Query Event information
 $event = "SELECT * FROM humanface.events e
-          JOIN event_types et on e.type = et.id";
+          JOIN event_types et on e.type = et.id
+          WHERE e.parcel_id = $p";
 $e = pg_query($connect, $event);
 
 ?>
