@@ -46,6 +46,9 @@ $aquery = "SELECT st_num, st_name
 $a = pg_query($connect, $aquery);
 
 //Query Event information
+$event = "SELECT * FROM humanface.events e
+          JOIN event_types et on e.type = et.id";
+$e = pg_query($connect, $event);
 
 ?>
 
