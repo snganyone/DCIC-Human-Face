@@ -21,7 +21,7 @@
   <?php
   require '../credentials.inc.php';
   //include 'search.php';
-  ini_set('display_errors', 1);
+  //ini_set('display_errors', 1);
   //Connection to PostgreSQL
   $connect = pg_connect('host=' . DBHOST . ' dbname=' . DBNAME . ' user=' . DBUSER . ' password=' . DBPASS);
   if (!$connect){
@@ -56,7 +56,7 @@ else{
 <!-- Bootstrap Table Button Groups-->
 
     <div class="form-row float-md-left" id="toolbar">
-      <form class="form-group col" method="post" action="delete.php" name="delete">
+      <form class="form-group col" method="post" action="delete1.php" name="delete">
       <button class="btn btn-danger my-2 my-sm-0" name="delete" type="submit" value="submit"
       data-toggle="popover"
       title="Delete an Existing Record"
