@@ -65,6 +65,8 @@ $e = pg_query($connect, $event);
   <form method="post" action="data.php" name="form" id="form" style="margin: 0 auto; width: 80%;">
   <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$ia['parcel_id']?>">
     <h2 class="text-center">Parcel Information</h2>
+
+    <div style="border-style: solid;">
     <div class="form-row">
     <div class="form-group col-sm-2">
     <label class="float-md-center" for="Parcel ID">Parcel ID</label>
@@ -98,6 +100,7 @@ $e = pg_query($connect, $event);
         <input class="form-control" type="text" id="st_num" name="st_num">
       </div>
     </div>
+  </div>
 
     <button type="submit" class="btn btn-danger" name="delete" id="delete">Delete</button>
     </form>
