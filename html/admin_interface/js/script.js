@@ -48,10 +48,10 @@
         y =
         rows[i].getElementsByTagName("TD")[2];
         console.log(y);
-        if(Number(x.innerHTML) > Number(y.innerHTML)){
+        /*if((x.innerHTML) > (y.innerHTML)){
           the_switch = true;
           break;
-        }
+        }*/
       }
       if(the_switch){
         rows[i].parentNode.insertBefore(rows[i + 5], rows[i]);
@@ -98,7 +98,7 @@
 
   $(document).ready(function(){
     pagination();
-    sort();
+    //sort();
     filter();
   }); //Waits until DOM elements are loaded and ready to execute
 

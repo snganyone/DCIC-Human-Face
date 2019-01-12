@@ -40,11 +40,11 @@ else{
   $num = pg_num_rows($par);
 
   //Obtain Parcel ID when user selects Edit button in table
-  /*if($_GET['pid']){
+  if($_GET['pid']){
     $x = "SELECT * FROM humanface.parcels WHERE parcel_id = " . $_GET['pid'];
     $p = pg_query($connect, $x);
     $prow = pg_fetch_assoc($p);
-  }*/
+  }
   ?>
 
 </head>
@@ -152,12 +152,11 @@ else{
   <table class="table table-light table-hover table-bordered table-responsive-md" id="table">
     <thead class="thead-light">
       <tr>
-        <!-- <th scope="col" class="pr-md-3 pr-5 text-center">
-          <input class="form-check-input" type="checkbox">
-          <label class="form-check-label" for = "checkbox"></label>
-        </th> -->
-        <th scope="col" class="text-center"></th>
-        <th scope="col" class="text-center"></th>
+        <tr>
+        <th scope="col" rowspan="10" class="text-center"></th>
+        <th scope="col" rowspan="10" class="text-center"></th>
+        <th colspan="10" class="text-center">Parcel Information</th>
+        </tr>
         <th class="text-center">Parcel ID <button class="btn btn-link" onclick="sort()"><i class="fas fa-sort"></i></button></th>
         <th scope="col" class="text-center">Block Number <button class="btn btn-link" onclick="sort()"><i class="fas fa-sort"></i></button></th>
         <th scope="col" class="text-center">Parcel Number <button class="btn btn-link" onclick="sort()"><i class="fas fa-sort"></i></button></th>
@@ -168,14 +167,13 @@ else{
     <tbody>
       <?php foreach($row as $rows){ ?>
       <tr>
-        <form action="data.php" method="post">
+        <form action="delete.php" method="post">
           <td class="pr-md-3 pr-5 text-center">
-            <a href="edit.php?pid=<?=$rows['parcel_id']?>">
+            <a href="parcels.php?pid=<?=$prow['parcel_id']?>">
             <button class="btn btn-danger" type="submit" name="delete" value="delete">
-            </a>
-            <span style="color: white;">
             <i class="fas fa-trash-alt"></i>
-            </span>
+            </button>
+            </a>
           </td>
         </form>
         <td class="pr-md-3 pr-5 text-center">

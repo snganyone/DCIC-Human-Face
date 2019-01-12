@@ -13,14 +13,14 @@
 //Connection to PostgreSQL
 require '../credentials.inc.php';
 
-ini_set('display_errors');
+//ini_set('display_errors', 1);
 
 $connect = pg_connect('host=' . DBHOST . ' dbname=' . DBNAME . ' user=' . DBUSER . ' password=' . DBPASS);
 if (!$connect){
   die("Error in connection!:" . pg_last_error());
 }
 else{
-  echo "Successfully connected to database:" . " " .pg_dbname() . " on " . pg_host();
+  //echo "Successfully connected to database:" . " " .pg_dbname() . " on " . pg_host();
 }
 //Querying Parcels Table information
 $query = 'SELECT * FROM humanface.parcels';
@@ -28,51 +28,52 @@ $par = pg_query($connect, $query);
 $row = pg_fetch_all($par);
 
 //Obtain Selected Parcel Information (Parcel ID)
+
 if($_GET['p_id']){
   $u = "SELECT * FROM humanface.parcels WHERE parcel_id = " . $_GET['p_id'];
   $pquery = pg_query($connect, $u);
-  $arr = pg_fetch_assoc($pquery);
+  $r = pg_fetch_assoc($pquery);
 }
 ?>
 
 </head>
 <body>
+  <!-- DCIC Logo -->
+  <div class="section-header">
+  <img src="../images/LOGO.png" alt="DCIC Logo">
+  </div>
+
   <form method="post" action="data.php" name="form" id="form">
-    <div class="card float-md-none">
-      <div class="card-header">
-        Human Face of Big Data
-      </div>
-    </div>
   <div class="dropdown">
       <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-    </button>
+        Dropdown button
+      </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <?php foreach($row as $r){ ?>
-      <a class="dropdown-item" href="delete.php?p_id=<?=$r['parcel_id']?>"><?php echo $r['parcel_id'];?></a>
+      <?php foreach($row as $x){ ?>
+      <a class="dropdown-item" href="delete.php?p_id=<?=$x['parcel_id']?>"><?php echo $x['parcel_id'];?></a>
       <?php } ?>
     </div>
   </div>
-  <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$arr['parcel_id']?>">
+  <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$r['parcel_id']?>">
   <div class="form-group">
   <label class="float-md-center" for="Parcel ID">Parcel ID</label>
-  <input class="form-control" type="text" id="parcel_id" name="parcel_id" value="<?=$arr['parcel_id'];?>">
+  <input class="form-control" type="text" id="parcel_id" name="parcel_id" value="<?=$r['parcel_id']?>">
   </div>
   <div class="form-group">
   <label class="float-md-center" for="block_number">Block Number</label>
-  <input class="form-control" type="text" id="block_number" name="block_number" value="<?=$arr['block_no']?>">
+  <input class="form-control" type="text" id="block_number" name="block_number" value="<?=$r['block_no']?>">
   </div>
   <div class="form-group">
   <label class="float-md-center" for="parcel_number">Parcel Number</label>
-  <input class="form-control" type="text" id="parcel_number" name="parcel_number" value="<?=$arr['parcel_no']?>">
+  <input class="form-control" type="text" id="parcel_number" name="parcel_number" value="<?=$r['parcel_no']?>">
   </div>
   <div class="form-group">
   <label class="float-md-center" for="ward_number">Ward Number</label>
-  <input class="form-control" type="text" id="ward_number" name="ward_number" value="<?=$arr['ward_no']?>">
+  <input class="form-control" type="text" id="ward_number" name="ward_number" value="<?=$r['ward_no']?>">
   </div>
   <div class="form-group">
   <label class="float-md-center" for="land_use">Land Use</label>
-  <input class="form-control" type="text" id="land_use" name="land_use" value="<?=$arr['land_use']?>">
+  <input class="form-control" type="text" id="land_use" name="land_use" value="<?=$r['land_use']?>">
   </div>
   <button type="submit" class="btn btn-success" name="delete" id="delete">Submit</button>
   </form>
