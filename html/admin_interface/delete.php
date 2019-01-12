@@ -39,10 +39,12 @@ if($_GET['p_id']){
 </head>
 <body>
   <!-- DCIC Logo -->
-  <div class="section-header">
+  <div class="section-header text-center">
   <img src="../images/LOGO.png" alt="DCIC Logo">
   </div>
-
+  <div class="alert alert-danger text-center" role="alert">
+  Selecting the Delete button will permanently remove the record from the system.
+  </div>
   <form method="post" action="data.php" name="form" id="form">
   <div class="dropdown">
       <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
