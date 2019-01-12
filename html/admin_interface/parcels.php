@@ -167,18 +167,18 @@ else{
     <tbody>
       <?php foreach($row as $rows){ ?>
       <tr>
-        <form action="delete.php" method="post">
-          <td class="pr-md-3 pr-5 text-center">
-            <a href="parcels.php?pid=<?=$prow['parcel_id']?>">
-            <button class="btn btn-danger" type="submit" name="delete" value="delete">
-            <i class="fas fa-trash-alt"></i>
-            </button>
-            </a>
-          </td>
-        </form>
+        <td class="pr-md-3 pr-5 text-center">
+          <a href="delete.php?pid=<?=$rows['parcel_id']?>">
+          <button class="btn btn-danger">
+          <i class="fas fa-trash-alt"></i>
+          </button>
+          </a>
+        </td>
         <td class="pr-md-3 pr-5 text-center">
           <a href="edit.php?pid=<?=$rows['parcel_id']?>">
-          <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+          <button class="btn btn-primary">
+          <i class="fas fa-edit"></i>
+          </button>
           </a>
         </td>
         <td class="text-center"><?php echo $rows['parcel_id'] . "\n"; ?></td>
@@ -191,7 +191,7 @@ else{
     </tbody>
   </table>
 
-<!-- Bootstrap Table Pagination-->
+<!-- Bootstrap Table Pagination -->
 
 <div class="float-md-right paginated-table" id="pagination">
     <pagination class="pagination">

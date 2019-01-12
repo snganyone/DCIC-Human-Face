@@ -34,6 +34,9 @@ if($_GET['p_id']){
   $pquery = pg_query($connect, $u);
   $r = pg_fetch_assoc($pquery);
 }
+
+//Processed passed pid variable from parcels.php page
+$p = $_GET["pid"];
 ?>
 
 </head>
