@@ -36,7 +36,15 @@ if($_GET['p_id']){
 }
 
 //Processed passed pid variable from parcels.php page
+/*If a user selects a row from the parcels table to delete
+this condition will run
+*/
 $p = $_GET["pid"];
+if($p){
+  $i = "SELECT * FROM humanface.parcels WHERE parcel_id = " . $p;
+  $ip = pg_query($connect, $i);
+  $ia = pg_fetch_assoc($ip);
+}
 ?>
 
 </head>
@@ -59,26 +67,26 @@ $p = $_GET["pid"];
       <?php } ?>
     </div>
   </div>
-  <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$r['parcel_id']?>">
+  <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$ia['parcel_id']?>">
   <div class="form-group">
   <label class="float-md-center" for="Parcel ID">Parcel ID</label>
-  <input class="form-control" type="text" id="parcel_id" name="parcel_id" value="<?=$r['parcel_id']?>">
+  <input class="form-control" type="text" id="parcel_id" name="parcel_id" value="<?=$ia['parcel_id']?>">
   </div>
   <div class="form-group">
   <label class="float-md-center" for="block_number">Block Number</label>
-  <input class="form-control" type="text" id="block_number" name="block_number" value="<?=$r['block_no']?>">
+  <input class="form-control" type="text" id="block_number" name="block_number" value="<?=$ia['block_no']?>">
   </div>
   <div class="form-group">
   <label class="float-md-center" for="parcel_number">Parcel Number</label>
-  <input class="form-control" type="text" id="parcel_number" name="parcel_number" value="<?=$r['parcel_no']?>">
+  <input class="form-control" type="text" id="parcel_number" name="parcel_number" value="<?=$ia['parcel_no']?>">
   </div>
   <div class="form-group">
   <label class="float-md-center" for="ward_number">Ward Number</label>
-  <input class="form-control" type="text" id="ward_number" name="ward_number" value="<?=$r['ward_no']?>">
+  <input class="form-control" type="text" id="ward_number" name="ward_number" value="<?=$ia['ward_no']?>">
   </div>
   <div class="form-group">
   <label class="float-md-center" for="land_use">Land Use</label>
-  <input class="form-control" type="text" id="land_use" name="land_use" value="<?=$r['land_use']?>">
+  <input class="form-control" type="text" id="land_use" name="land_use" value="<?=$ia['land_use']?>">
   </div>
   <button type="submit" class="btn btn-success" name="delete" id="delete">Submit</button>
   </form>
