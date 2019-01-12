@@ -56,40 +56,33 @@ if($p){
   <div class="alert alert-danger text-center" role="alert">
   Selecting the Delete button will permanently remove the record from the system.
   </div>
+  <div>
   <form method="post" action="data.php" name="form" id="form">
-  <div class="dropdown">
-      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
-      </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <?php foreach($row as $x){ ?>
-      <a class="dropdown-item" href="delete.php?p_id=<?=$x['parcel_id']?>"><?php echo $x['parcel_id'];?></a>
-      <?php } ?>
+  </div>
+    <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$ia['parcel_id']?>">
+    <div class="form-group">
+    <label class="float-md-center" for="Parcel ID">Parcel ID</label>
+    <input class="form-control" type="text" id="parcel_id" name="parcel_id" value="<?=$ia['parcel_id']?>">
     </div>
+    <div class="form-group">
+    <label class="float-md-center" for="block_number">Block Number</label>
+    <input class="form-control" type="text" id="block_number" name="block_number" value="<?=$ia['block_no']?>">
+    </div>
+    <div class="form-group">
+    <label class="float-md-center" for="parcel_number">Parcel Number</label>
+    <input class="form-control" type="text" id="parcel_number" name="parcel_number" value="<?=$ia['parcel_no']?>">
+    </div>
+    <div class="form-group">
+    <label class="float-md-center" for="ward_number">Ward Number</label>
+    <input class="form-control" type="text" id="ward_number" name="ward_number" value="<?=$ia['ward_no']?>">
+    </div>
+    <div class="form-group">
+    <label class="float-md-center" for="land_use">Land Use</label>
+    <input class="form-control" type="text" id="land_use" name="land_use" value="<?=$ia['land_use']?>">
+    </div>
+    <button type="submit" class="btn btn-success" name="delete" id="delete">Submit</button>
+    </form>
   </div>
-  <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$ia['parcel_id']?>">
-  <div class="form-group">
-  <label class="float-md-center" for="Parcel ID">Parcel ID</label>
-  <input class="form-control" type="text" id="parcel_id" name="parcel_id" value="<?=$ia['parcel_id']?>">
-  </div>
-  <div class="form-group">
-  <label class="float-md-center" for="block_number">Block Number</label>
-  <input class="form-control" type="text" id="block_number" name="block_number" value="<?=$ia['block_no']?>">
-  </div>
-  <div class="form-group">
-  <label class="float-md-center" for="parcel_number">Parcel Number</label>
-  <input class="form-control" type="text" id="parcel_number" name="parcel_number" value="<?=$ia['parcel_no']?>">
-  </div>
-  <div class="form-group">
-  <label class="float-md-center" for="ward_number">Ward Number</label>
-  <input class="form-control" type="text" id="ward_number" name="ward_number" value="<?=$ia['ward_no']?>">
-  </div>
-  <div class="form-group">
-  <label class="float-md-center" for="land_use">Land Use</label>
-  <input class="form-control" type="text" id="land_use" name="land_use" value="<?=$ia['land_use']?>">
-  </div>
-  <button type="submit" class="btn btn-success" name="delete" id="delete">Submit</button>
-  </form>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
