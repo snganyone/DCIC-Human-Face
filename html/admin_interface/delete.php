@@ -32,12 +32,20 @@ $row = pg_fetch_all($par);
 this condition will run
 */
 $p = $_GET["pid"];
+
 if($p){
   $i = "SELECT * FROM humanface.parcels WHERE parcel_id = " . $p;
   $ip = pg_query($connect, $i);
   $ia = pg_fetch_assoc($ip);
 }
 //Query Address Information
+$aquery = "SELECT st_num, st_name
+          From humanface.addresses
+          WHERE parcel_id = $p
+          ORDER BY parcel_id";
+$a = pg_query($connect, $aquery);
+
+//Query Event information
 
 ?>
 
@@ -79,10 +87,15 @@ if($p){
     <input class="form-control" type="text" id="land_use" name="land_use" value="<?=$ia['land_use']?>">
     </div>
     </div>
+
     <div class="form-row">
       <div class="form-group col-md-4">
         <label>Street Number</label>
-        <input class="form-control">
+        <input class="form-control" type="text" id="st_num" name="st_num">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Street Name</label>
+        <input class="form-control" type="text" id="st_num" name="st_num">
       </div>
     </div>
 
