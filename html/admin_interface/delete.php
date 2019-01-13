@@ -120,11 +120,11 @@ $ep = pg_query($connect, $people);
     </div>
     <div class="form-group col-sm-4">
       <label>Date</label>
-      <input class="form-control" type="text" id="date" name="date">
+      <input class="form-control" type="text" id="date" name="date" value="<?=$ea['date']?>">
     </div>
     <div class="form-group col-sm-4">
       <label>Price</label>
-      <input class="form-control" type="text" id="price" name="price">
+      <input class="form-control" type="text" id="price" name="price" value="<?=$ea['price']?>">
     </div>
   </div>
   <div class="form-row">
