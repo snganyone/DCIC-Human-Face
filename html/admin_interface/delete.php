@@ -37,15 +37,22 @@ if($p){
 //Query Address Information
 $aquery = "SELECT st_num, st_name
           From humanface.addresses
-          WHERE parcel_id = $p
+          WHERE parcel_id = " . $p ."
           ORDER BY parcel_id";
 $a = pg_query($connect, $aquery);
 
 //Query Event information
 $event = "SELECT * FROM humanface.events e
           JOIN event_types et on e.type = et.id
-          WHERE e.parcel_id = $p";
+          WHERE e.parcel_id =" . $p;
 $e = pg_query($connect, $event);
+
+//Query Event people
+$people = "SELECT e.event_id, ep.event_id, p.person_id, ep.role, p.name
+            FROM events e
+          	JOIN event_people_assoc ep ON e.event_id = ep.event_id
+          	JOIN people p ON ep.person_id = p.person_id";
+$ep = pg_query($connect, $people);
 
 ?>
 
@@ -101,9 +108,10 @@ $e = pg_query($connect, $event);
       </div>
     </div>
   </div>
-
+<br><br><br>
   <h2 class="text-center">Event Information</h2>
 
+  <div style="border: 1px solid; border-radius: 5px;">
   <div class="form-row">
     <div class="form-group col-sm-4">
       <label>Type</label>
@@ -118,7 +126,39 @@ $e = pg_query($connect, $event);
       <input class="form-control" type="text" id="price" name="price">
     </div>
   </div>
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <label>Response</label>
+      <input class="form-control" type="text" id="response" name="response">
+    </div>
+    <div class="form-group col-sm-6">
+      <label>Extra Information</label>
+      <input class="form-control" type="text" id="extra_info" name="extra_info">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+    <label>Role</label>
+    <input class="form-control" type="text" id="role" name="role">
+    </div>
+    <div class="form-group col-sm-6">
+    <label>Name</label>
+    <input class="form-control" type="text" id="name" name="name">
+    </div>
 
+    <div class="form-group col-sm-6">
+    <label>Role</label>
+    <input class="form-control" type="text" id="role1" name="role1">
+    </div>
+    <div class="form-group col-sm-6">
+    <label>Name</label>
+    <input class="form-control" type="text" id="name1" name="name1">
+    </div>
+  </div>
+  </div>
+
+  <?php echo $event; ?>
+<br><br><br>
     <button type="submit" class="btn btn-danger" name="delete" id="delete">Delete</button>
     </form>
 
