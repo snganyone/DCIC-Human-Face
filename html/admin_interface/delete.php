@@ -30,9 +30,16 @@ this condition will run
 $p = $_GET["pid"];
 
 if($p){
+  //Query Parcel Information from table selection
   $i = "SELECT * FROM humanface.parcels WHERE parcel_id = " . $p;
   $ip = pg_query($connect, $i);
   $ia = pg_fetch_assoc($ip);
+  //Query Event information
+  $event = "SELECT * FROM humanface.events e
+            JOIN event_types et on e.type = et.id
+            WHERE e.parcel_id =" . $p;
+  $e = pg_query($connect, $event);
+  $ea = pg_fetch_assoc($e);
 }
 //Query Address Information
 $aquery = "SELECT st_num, st_name
@@ -40,12 +47,6 @@ $aquery = "SELECT st_num, st_name
           WHERE parcel_id = " . $p ."
           ORDER BY parcel_id";
 $a = pg_query($connect, $aquery);
-
-//Query Event information
-$event = "SELECT * FROM humanface.events e
-          JOIN event_types et on e.type = et.id
-          WHERE e.parcel_id =" . $p;
-$e = pg_query($connect, $event);
 
 //Query Event people
 $people = "SELECT e.event_id, ep.event_id, p.person_id, ep.role, p.name
@@ -115,7 +116,7 @@ $ep = pg_query($connect, $people);
   <div class="form-row">
     <div class="form-group col-sm-4">
       <label>Type</label>
-      <input class="form-control" type="text" id="type" name="type">
+      <input class="form-control" type="text" id="type" name="type" value="<?=$ea['type']?>">
     </div>
     <div class="form-group col-sm-4">
       <label>Date</label>
