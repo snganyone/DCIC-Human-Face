@@ -40,6 +40,15 @@ if($p){
             WHERE e.parcel_id =" . $p;
   $e = pg_query($connect, $event);
   $ea = pg_fetch_assoc($e);
+  //Query Event people
+  $people = "SELECT e.event_id, ep.event_id, p.person_id, ep.role, p.name
+              FROM events e
+            	JOIN event_people_assoc ep ON e.event_id = ep.event_id
+            	JOIN people p ON ep.person_id = p.person_id
+              WHERE e.parcel_id = " . $p . "
+              ORDER BY e.event_id, p.person_id, ep.event_id";
+  $pquery = pg_query($connect, $people);
+  $ep = pg_fetch_assoc($pquery);
 }
 //Query Address Information
 $aquery = "SELECT st_num, st_name
@@ -47,13 +56,6 @@ $aquery = "SELECT st_num, st_name
           WHERE parcel_id = " . $p ."
           ORDER BY parcel_id";
 $a = pg_query($connect, $aquery);
-
-//Query Event people
-$people = "SELECT e.event_id, ep.event_id, p.person_id, ep.role, p.name
-            FROM events e
-          	JOIN event_people_assoc ep ON e.event_id = ep.event_id
-          	JOIN people p ON ep.person_id = p.person_id";
-$ep = pg_query($connect, $people);
 
 ?>
 
@@ -140,25 +142,19 @@ $ep = pg_query($connect, $people);
   <div class="form-row">
     <div class="form-group col-sm-6">
     <label>Role</label>
-    <input class="form-control" type="text" id="role" name="role">
+    <input class="form-control" type="text" id="role" name="role" value="<?=$ep['role']?>">
     </div>
     <div class="form-group col-sm-6">
     <label>Name</label>
-    <input class="form-control" type="text" id="name" name="name">
-    </div>
-
-    <div class="form-group col-sm-6">
-    <label>Role</label>
-    <input class="form-control" type="text" id="role1" name="role1">
-    </div>
-    <div class="form-group col-sm-6">
-    <label>Name</label>
-    <input class="form-control" type="text" id="name1" name="name1">
+    <input class="form-control" type="text" id="name" name="name" value="<?=$ep['name']?>">
     </div>
   </div>
   </div>
 
-  <?php echo $event; ?>
+  <?php echo $event . "\n"; ?>
+  <?php print_r($ea); ?>
+  <?php print_r($ep)?>
+
 <br><br><br>
     <button type="submit" class="btn btn-danger" name="delete" id="delete">Delete</button>
     </form>
