@@ -41,12 +41,12 @@ if($p){
   $e = pg_query($connect, $event);
   $ea = pg_fetch_assoc($e);
   //Query Event people
-  $people = "SELECT e.event_id, ep.event_id, p.person_id, ep.role, p.name
+  $people = "SELECT e.event_id, p.person_id, ep.role, p.name
               FROM events e
             	JOIN event_people_assoc ep ON e.event_id = ep.event_id
             	JOIN people p ON ep.person_id = p.person_id
               WHERE e.parcel_id = " . $p . "
-              ORDER BY e.event_id, p.person_id, ep.event_id";
+              ORDER BY e.parcel_id";
   $pquery = pg_query($connect, $people);
   $ep = pg_fetch_assoc($pquery);
 }
