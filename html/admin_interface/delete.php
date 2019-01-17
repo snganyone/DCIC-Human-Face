@@ -112,6 +112,7 @@ $a = pg_query($connect, $aquery);
     </div>
   </div>
 <br><br><br>
+
   <h2 class="text-center">Event Information</h2>
 
   <div style="border: 1px solid; border-radius: 5px;">
