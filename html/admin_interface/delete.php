@@ -115,29 +115,31 @@ $a = pg_query($connect, $aquery);
 
   <h2 class="text-center">Event Information</h2>
 
+<?php foreach ($ea as $ev) {?>
+
   <div style="border: 1px solid; border-radius: 5px;">
   <div class="form-row">
     <div class="form-group col-sm-4">
       <label>Type</label>
-      <input class="form-control" type="text" id="type" name="type" value="<?=$ea['type']?>">
+      <input class="form-control" type="text" id="type" name="type" value="<?=$ev['type']?>">
     </div>
     <div class="form-group col-sm-4">
       <label>Date</label>
-      <input class="form-control" type="text" id="date" name="date" value="<?=$ea['date']?>">
+      <input class="form-control" type="text" id="date" name="date" value="<?=$ev['date']?>">
     </div>
     <div class="form-group col-sm-4">
       <label>Price</label>
-      <input class="form-control" type="text" id="price" name="price" value="<?=$ea['price']?>">
+      <input class="form-control" type="text" id="price" name="price" value="<?=$ev['price']?>">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-sm-6">
       <label>Response</label>
-      <input class="form-control" type="text" id="response" name="response" value="<?=$ea['response']?>">
+      <input class="form-control" type="text" id="response" name="response" value="<?=$ev['response']?>">
     </div>
     <div class="form-group col-sm-6">
       <label>Extra Information</label>
-      <input class="form-control" type="text" id="extra_info" name="extra_info" value="<?=$ea['extra_information']?>">
+      <input class="form-control" type="text" id="extra_info" name="extra_info" value="<?=$ev['extra_information']?>">
     </div>
   </div>
   <div class="form-row">
@@ -151,7 +153,8 @@ $a = pg_query($connect, $aquery);
     </div>
   </div>
   </div>
-
+  <br><br>
+<?php }?>
   <?php echo $event . "\n"; ?>
   <?php echo "<br>"; ?>
   <?php print_r($ia)?>
