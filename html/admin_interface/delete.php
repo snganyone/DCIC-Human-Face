@@ -34,28 +34,32 @@ if($p){
   $i = "SELECT * FROM humanface.parcels WHERE parcel_id = " . $p;
   $ip = pg_query($connect, $i);
   $ia = pg_fetch_assoc($ip);
+
   //Query Event information
   $event = "SELECT * FROM humanface.events e
             JOIN event_types et on e.type = et.id
             WHERE e.parcel_id =" . $p;
   $e = pg_query($connect, $event);
   $ea = pg_fetch_assoc($e);
+
   //Query Event people and Association
-  $people = "SELECT e.event_id, p.person_id, ep.role, p.name
-              FROM events e
-            	JOIN event_people_assoc ep ON e.event_id = ep.event_id
-            	JOIN people p ON ep.person_id = p.person_id
+  $people = "SELECT ep.role, p.name
+              FROM humanface.events e
+            	JOIN humanface.event_people_assoc ep ON e.event_id = ep.event_id
+            	JOIN humanface.people p ON ep.person_id = p.person_id
               WHERE e.parcel_id = " . $p . "
               ORDER BY e.parcel_id";
   $pquery = pg_query($connect, $people);
   $ep = pg_fetch_assoc($pquery);
+
+  //Query Address Information
+  $aquery = "SELECT st_num, st_name
+            From humanface.addresses
+            WHERE parcel_id = " . $p ."
+            ORDER BY parcel_id";
+  $a = pg_query($connect, $aquery);
+  $afetch = pg_fetch_assoc($a);
 }
-//Query Address Information
-$aquery = "SELECT st_num, st_name
-          From humanface.addresses
-          WHERE parcel_id = " . $p ."
-          ORDER BY parcel_id";
-$a = pg_query($connect, $aquery);
 
 ?>
 
@@ -71,6 +75,15 @@ $a = pg_query($connect, $aquery);
   </div>
 
   <!-- PHP Form -->
+  <?php echo $event . "\n"; ?>
+  <?php echo "<br>"; ?>
+  <?php print_r($ia)?>
+  <?php echo "<br>"; ?>
+  <?php print_r($ea); ?>
+  <?php echo "<br>"; ?>
+  <?php print_r($ep); ?>
+  <?php echo "<br>"; ?>
+  <?php print_r($afetch); ?>
 
   <form method="post" action="data.php" name="form" id="form" style="margin: 0 auto; width: 80%;">
   <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$ia['parcel_id']?>">
@@ -99,15 +112,14 @@ $a = pg_query($connect, $aquery);
     <input class="form-control" type="text" id="land_use" name="land_use" value="<?=$ia['land_use']?>">
     </div>
     </div>
-
     <div class="form-row">
       <div class="form-group col-md-4">
         <label>Street Number</label>
-        <input class="form-control" type="text" id="st_num" name="st_num">
+        <input class="form-control" type="text" id="st_num" name="st_num" value="<?php echo $afetch['st_num']; ?>">
       </div>
       <div class="form-group col-md-6">
         <label>Street Name</label>
-        <input class="form-control" type="text" id="st_num" name="st_num">
+        <input class="form-control" type="text" id="st_name" name="st_name" value="<?php echo $afetch['st_name']; ?>">
       </div>
     </div>
   </div>
@@ -115,13 +127,11 @@ $a = pg_query($connect, $aquery);
 
   <h2 class="text-center">Event Information</h2>
 
-<?php foreach ($ea as $ev) {?>
-
   <div style="border: 1px solid; border-radius: 5px;">
   <div class="form-row">
     <div class="form-group col-sm-4">
       <label>Type</label>
-      <input class="form-control" type="text" id="type" name="type" value="<?=$ev['type']?>">
+      <input class="form-control" type="text" id="type" name="type" value="<?=$ev['type'];?>">
     </div>
     <div class="form-group col-sm-4">
       <label>Date</label>
@@ -154,18 +164,10 @@ $a = pg_query($connect, $aquery);
   </div>
   </div>
   <br><br>
-<?php }?>
-  <?php echo $event . "\n"; ?>
-  <?php echo "<br>"; ?>
-  <?php print_r($ia)?>
-  <?php echo "<br>"; ?>
-  <?php print_r($ea); ?>
-  <?php echo "<br>"; ?>
-  <?php print_r($ep); ?>
 
-<br><br><br>
+    <br><br><br>
     <button type="submit" class="btn btn-danger" name="delete" id="delete" onclick="return formsubmit();">Delete</button>
-    </form>
+</form>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
