@@ -40,7 +40,7 @@ if($p){
             WHERE e.parcel_id =" . $p;
   $e = pg_query($connect, $event);
   $ea = pg_fetch_assoc($e);
-  //Query Event people
+  //Query Event people and Association
   $people = "SELECT e.event_id, p.person_id, ep.role, p.name
               FROM events e
             	JOIN event_people_assoc ep ON e.event_id = ep.event_id
@@ -153,11 +153,15 @@ $a = pg_query($connect, $aquery);
   </div>
 
   <?php echo $event . "\n"; ?>
+  <?php echo "<br>"; ?>
+  <?php print_r($ia)?>
+  <?php echo "<br>"; ?>
   <?php print_r($ea); ?>
-  <?php print_r($ep)?>
+  <?php echo "<br>"; ?>
+  <?php print_r($ep); ?>
 
 <br><br><br>
-    <button type="submit" class="btn btn-danger" name="delete" id="delete">Delete</button>
+    <button type="submit" class="btn btn-danger" name="delete" id="delete" onclick="return formsubmit();">Delete</button>
     </form>
 
 <!-- Optional JavaScript -->
@@ -166,55 +170,7 @@ $a = pg_query($connect, $aquery);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-<script>
+<script src="js/delete.js"></script>
 
-//JavaScript Code
-
-function validateForm(){
-  //Form Validation
-  var x, y, z, v, w;
-  x = document.forms["form"]["parcel_id"].value;
-  y = document.forms["form"]["block_no"].value;
-  z = document.forms["form"]["parcel_no"].value;
-  w = document.forms["form"]["ward_no"].value;
-  v = document.forms["form"]["land_use"].value;
-
-  //Validates that all Form fields are completed
-  if(x == "" || y == "" || z == "" || w == "" || z == "" || v == ""){
-    alert("Please fill out all form fields");
-    return false;
-  }
-
-  //Validates that the block, parcel, and ward numbers are integers
-  //Parcel ID
-  if(isNaN(x)){
-    alert("Please enter a number in the Parcel ID field");
-    return false;
-  }
-  //Block Number
-  if(isNaN(y)){
-    alert("Please enter a number in the Block Number field");
-    return false;
-  }
-  //Parcel Number
-  if(isNaN(z)){
-    alert("Please enter a number in the Parcel Number field");
-    return false;
-  }
-  //Ward Number
-  if(isNaN(w)){
-   alert("Please enter a number in the Ward Number field");
-   return false;
-  }
-}
-
-//JQuery Code
-
-$("#parcel_id").on("click", function(){
-  alert("Please provide the Parcel ID number!");
-});
-
-//Form Submission Event
-</script>
 </body>
 </html>
