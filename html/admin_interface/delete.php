@@ -36,9 +36,11 @@ if($p){
   $ia = pg_fetch_assoc($ip);
 
   //Query Event information
-  $event = "SELECT * FROM humanface.events e
-            JOIN event_types et on e.type = et.id
-            WHERE e.parcel_id =" . $p;
+  $event = "SELECT e.event_id, e.response, e.extra_information, e.parcel_id, e.date, e.price, et.type
+            FROM humanface.events e
+            JOIN humanface.event_types et ON e.type = et.id
+            WHERE e.parcel_id =" . $p . "
+            ORDER BY  e.parcel_id, e.event_id";
   $e = pg_query($connect, $event);
   $ea = pg_fetch_assoc($e);
 
@@ -75,8 +77,6 @@ if($p){
   </div>
 
   <!-- PHP Form -->
-  <?php echo $event . "\n"; ?>
-  <?php echo "<br>"; ?>
   <?php print_r($ia)?>
   <?php echo "<br>"; ?>
   <?php print_r($ea); ?>
@@ -131,25 +131,25 @@ if($p){
   <div class="form-row">
     <div class="form-group col-sm-4">
       <label>Type</label>
-      <input class="form-control" type="text" id="type" name="type" value="<?=$ev['type'];?>">
+      <input class="form-control" type="text" id="type" name="type" value="<?=$ea['type'];?>">
     </div>
     <div class="form-group col-sm-4">
       <label>Date</label>
-      <input class="form-control" type="text" id="date" name="date" value="<?=$ev['date']?>">
+      <input class="form-control" type="text" id="date" name="date" value="<?=$ea['date']?>">
     </div>
     <div class="form-group col-sm-4">
       <label>Price</label>
-      <input class="form-control" type="text" id="price" name="price" value="<?=$ev['price']?>">
+      <input class="form-control" type="text" id="price" name="price" value="<?=$ea['price']?>">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-sm-6">
       <label>Response</label>
-      <input class="form-control" type="text" id="response" name="response" value="<?=$ev['response']?>">
+      <input class="form-control" type="text" id="response" name="response" value="<?=$ea['response']?>">
     </div>
     <div class="form-group col-sm-6">
       <label>Extra Information</label>
-      <input class="form-control" type="text" id="extra_info" name="extra_info" value="<?=$ev['extra_information']?>">
+      <input class="form-control" type="text" id="extra_info" name="extra_info" value="<?=$ea['extra_information']?>">
     </div>
   </div>
   <div class="form-row">
