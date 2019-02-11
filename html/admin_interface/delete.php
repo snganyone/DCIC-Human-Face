@@ -131,11 +131,11 @@ if($p){
 <br><br><br>
 
   <h2 class="text-center">Event Information</h2>
-  <?php $number = 1; ?>
+  <?php $count = 1; ?>
 <?php foreach ($event_arr as $ev) {?>
   <div style="border: 1px solid; border-radius: 5px;">
     <div class="text-center">
-      <h4>Event <?php echo $number;?></h4>
+      <h4>Event <?php echo $count;?></h4>
     </div>
   <div class="form-row">
     <div class="form-group col-sm-4">
@@ -173,7 +173,7 @@ if($p){
   </div>
   </div>
   <br><br>
-<?php $number++;}?>
+<?php $count++;}?>
   <br><br>
     <br><br>
     <div class="text-center">
