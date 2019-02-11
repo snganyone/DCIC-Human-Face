@@ -145,11 +145,11 @@ if($p){
   <div class="form-row">
     <div class="form-group col-sm-6">
       <label>Response</label>
-      <input class="form-control" type="text" id="response" name="response" value="<?=$ea['response']?>">
+      <input class="form-control" type="text" id="response" name="response" value="<?=$n['response']?>">
     </div>
     <div class="form-group col-sm-6">
       <label>Extra Information</label>
-      <input class="form-control" type="text" id="extra_info" name="extra_info" value="<?=$ea['extra_information']?>">
+      <input class="form-control" type="text" id="extra_info" name="extra_info" value="<?=$n['extra_information']?>">
     </div>
   </div>
   <div class="form-row">
