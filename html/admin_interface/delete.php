@@ -36,7 +36,7 @@ if($p){
   $ia = pg_fetch_assoc($ip);
 
   //Query Event information
-  $event = "SELECT e.event_id, e.response, e.extra_information, e.parcel_id, e.date, e.price, et.type, ep.role, p.name
+  $event = "SELECT DISTINCT e.event_id, e.response, e.extra_information, e.parcel_id, e.date, e.price, et.type, ep.role, p.name
         		FROM humanface.events e
         		JOIN humanface.event_types et ON e.type = et.id
         		JOIN humanface.event_people_assoc ep ON e.event_id = ep.event_id
@@ -122,10 +122,11 @@ if($p){
 <br><br><br>
 
   <h2 class="text-center">Event Information</h2>
-  <?php echo $ea;?>
+
   <?php $count = 1;?>
-  <?php while($n = pg_fetch_array($e)){?>
+  <?php while($n = pg_fetch_assoc($e)){?>
   <?php print_r($n);?>
+
   <div style="border: 1px solid; border-radius: 5px;">
     <div class="text-center">
       <h4>Event <?php echo $count;?></h4>
