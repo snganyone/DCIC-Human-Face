@@ -78,15 +78,6 @@ if($p){
   </div>
 
   <!-- PHP Form -->
-  <?php print_r($ia)?>
-  <?php echo "<br>"; ?>
-  <?php print_r($ea["event_id"]);?>
-  <?php echo "<br>"; ?>
-  <?php print_r($ep); ?>
-  <?php echo "<br>"; ?>
-  <?php print_r($afetch); ?>
-  <?php echo "<br>"; ?>
-  <?php print_r($event_arr); ?>
 
   <form method="post" action="data.php" name="form" id="form" style="margin: 0 auto; width: 80%;">
   <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$ia['parcel_id']?>">
@@ -129,6 +120,7 @@ if($p){
 <br><br><br>
 
   <h2 class="text-center">Event Information</h2>
+  <?php echo $ea;?>
   <?php $count = 1;?>
   <?php while($n = pg_fetch_array($e)){?>
   <?php print_r($n);?>
@@ -139,15 +131,15 @@ if($p){
   <div class="form-row">
     <div class="form-group col-sm-4">
       <label>Type</label>
-      <input class="form-control" type="text" id="type" name="type" value="<?=$ea['type'];?>">
+      <input class="form-control" type="text" id="type" name="type" value="<?=$n['type'];?>">
     </div>
     <div class="form-group col-sm-4">
       <label>Date</label>
-      <input class="form-control" type="date" id="date" name="date" value="<?=$ea['date']?>">
+      <input class="form-control" type="date" id="date" name="date" value="<?=$n['date']?>">
     </div>
     <div class="form-group col-sm-4">
       <label>Price</label>
-      <input class="form-control" type="text" id="price" name="price" value="<?=$ea['price']?>">
+      <input class="form-control" type="text" id="price" name="price" value="<?=$n['price']?>">
     </div>
   </div>
   <div class="form-row">
