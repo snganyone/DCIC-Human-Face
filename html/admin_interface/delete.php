@@ -131,10 +131,12 @@ if($p){
 <br><br><br>
 
   <h2 class="text-center">Event Information</h2>
-<?php foreach ($ea as $key => $value) {
-  echo $value;
-}?>
+  <?php $number = 1; ?>
+<?php foreach ($event_arr as $ev) {?>
   <div style="border: 1px solid; border-radius: 5px;">
+    <div class="text-center">
+      <h4>Event</h4>
+    </div>
   <div class="form-row">
     <div class="form-group col-sm-4">
       <label>Type</label>
@@ -170,14 +172,15 @@ if($p){
     </div>
   </div>
   </div>
-<?php ?>
   <br><br>
-
-    <br><br><br>
+<?php }?>
+  <br><br>
+    <br><br>
     <div class="text-center">
     <button type="submit" class="btn btn-danger" name="delete" id="delete" onclick="return formsubmit();">Delete</button>
     </div>
 </form>
+<br><br><br><br>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
