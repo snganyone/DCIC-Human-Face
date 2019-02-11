@@ -135,7 +135,7 @@ if($p){
 <?php foreach ($event_arr as $ev) {?>
   <div style="border: 1px solid; border-radius: 5px;">
     <div class="text-center">
-      <h4>Event</h4>
+      <h4>Event <?php echo $number;?></h4>
     </div>
   <div class="form-row">
     <div class="form-group col-sm-4">
@@ -173,7 +173,7 @@ if($p){
   </div>
   </div>
   <br><br>
-<?php }?>
+<?php $number++;}?>
   <br><br>
     <br><br>
     <div class="text-center">
