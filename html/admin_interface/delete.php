@@ -40,9 +40,12 @@ if($p){
             FROM humanface.events e
             JOIN humanface.event_types et ON e.type = et.id
             WHERE e.parcel_id =" . $p . "
-            ORDER BY  e.parcel_id, e.event_id";
+            ORDER BY e.parcel_id, e.event_id";
   $e = pg_query($connect, $event);
+  //$event_in = send_query($connect, $event);
   $ea = pg_fetch_assoc($e);
+  $event_arr = pg_fetch_array($e);
+
 
   //Query Event people and Association
   $people = "SELECT ep.role, p.name
@@ -79,11 +82,13 @@ if($p){
   <!-- PHP Form -->
   <?php print_r($ia)?>
   <?php echo "<br>"; ?>
-  <?php print_r($ea); ?>
+  <?php print_r($ea["event_id"]);?>
   <?php echo "<br>"; ?>
   <?php print_r($ep); ?>
   <?php echo "<br>"; ?>
   <?php print_r($afetch); ?>
+  <?php echo "<br>"; ?>
+  <?php print_r($event_arr); ?>
 
   <form method="post" action="data.php" name="form" id="form" style="margin: 0 auto; width: 80%;">
   <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$ia['parcel_id']?>">
@@ -126,7 +131,9 @@ if($p){
 <br><br><br>
 
   <h2 class="text-center">Event Information</h2>
-
+<?php foreach ($ea as $key => $value) {
+  echo $value;
+}?>
   <div style="border: 1px solid; border-radius: 5px;">
   <div class="form-row">
     <div class="form-group col-sm-4">
@@ -163,10 +170,13 @@ if($p){
     </div>
   </div>
   </div>
+<?php ?>
   <br><br>
 
     <br><br><br>
+    <div class="text-center">
     <button type="submit" class="btn btn-danger" name="delete" id="delete" onclick="return formsubmit();">Delete</button>
+    </div>
 </form>
 
 <!-- Optional JavaScript -->
