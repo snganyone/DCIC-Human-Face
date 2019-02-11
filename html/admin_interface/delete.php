@@ -131,7 +131,8 @@ if($p){
 <br><br><br>
 
   <h2 class="text-center">Event Information</h2>
-  <?php $count = 1; ?>
+  <?php $count = 1;?>
+  <?php ?>
 <?php foreach ($event_arr as $ev) {?>
   <div style="border: 1px solid; border-radius: 5px;">
     <div class="text-center">
@@ -144,7 +145,7 @@ if($p){
     </div>
     <div class="form-group col-sm-4">
       <label>Date</label>
-      <input class="form-control" type="text" id="date" name="date" value="<?=$ea['date']?>">
+      <input class="form-control" type="date" id="date" name="date" value="<?=$ea['date']?>">
     </div>
     <div class="form-group col-sm-4">
       <label>Price</label>
