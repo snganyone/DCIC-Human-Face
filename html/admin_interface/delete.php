@@ -42,10 +42,8 @@ if($p){
             WHERE e.parcel_id =" . $p . "
             ORDER BY e.parcel_id, e.event_id";
   $e = pg_query($connect, $event);
-  //$event_in = send_query($connect, $event);
   $ea = pg_fetch_assoc($e);
   $event_arr = pg_fetch_array($e);
-
 
   //Query Event people and Association
   $people = "SELECT ep.role, p.name
@@ -132,8 +130,8 @@ if($p){
 
   <h2 class="text-center">Event Information</h2>
   <?php $count = 1;?>
-  <?php ?>
-<?php foreach ($event_arr as $ev) {?>
+  <?php while($n = pg_fetch_array($e)){?>
+  <?php print_r($n);?>
   <div style="border: 1px solid; border-radius: 5px;">
     <div class="text-center">
       <h4>Event <?php echo $count;?></h4>
