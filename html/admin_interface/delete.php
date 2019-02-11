@@ -36,9 +36,11 @@ if($p){
   $ia = pg_fetch_assoc($ip);
 
   //Query Event information
-  $event = "SELECT e.event_id, e.response, e.extra_information, e.parcel_id, e.date, e.price, et.type
-            FROM humanface.events e
-            JOIN humanface.event_types et ON e.type = et.id
+  $event = "SELECT e.event_id, e.response, e.extra_information, e.parcel_id, e.date, e.price, et.type, ep.role, p.name
+        		FROM humanface.events e
+        		JOIN humanface.event_types et ON e.type = et.id
+        		JOIN humanface.event_people_assoc ep ON e.event_id = ep.event_id
+            JOIN humanface.people p ON ep.person_id = p.person_id
             WHERE e.parcel_id =" . $p . "
             ORDER BY e.parcel_id, e.event_id";
   $e = pg_query($connect, $event);
@@ -155,11 +157,11 @@ if($p){
   <div class="form-row">
     <div class="form-group col-sm-6">
     <label>Role</label>
-    <input class="form-control" type="text" id="role" name="role" value="<?=$ep['role']?>">
+    <input class="form-control" type="text" id="role" name="role" value="<?=$n['role']?>">
     </div>
     <div class="form-group col-sm-6">
     <label>Name</label>
-    <input class="form-control" type="text" id="name" name="name" value="<?=$ep['name']?>">
+    <input class="form-control" type="text" id="name" name="name" value="<?=$n['name']?>">
     </div>
   </div>
   </div>
