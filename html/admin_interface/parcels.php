@@ -110,47 +110,47 @@ else{
 
       <!-- Pagination Bar Button Group -->
       <div class="text-center">
-      <div align="center" class="btn-group">
-        <button type="button" class="btn btn-dark" id="pagi"
-        data-toggle="popover"
-        data-trigger="hover"
-        data-content="hide/show pagination"
-        data-placement="bottom">
-        <i class="fas fa-minus-square"></i>
-      </button>
-        <button type="button" class="btn btn-dark" id="table-pagi"
-        data-toggle="popover"
-        data-trigger="hover"
-        data-content="hide/show table"
-        data-placement="bottom">
-        <i class="fas fa-table"></i>
-      </button>
-      <button class="btn btn-dark" onclick="return sort();"
-        data-toggle="popover"
-        data-trigger="hover"
-        data-content="sort table"
-        data-placement="bottom">
-        <i class="fas fa-sort"></i>
-      </button>
-        <button type="button" class="btn btn-dark" onclick="refresh()"
+        <div align="center" class="btn-group">
+          <button type="button" class="btn btn-dark" id="pagi"
           data-toggle="popover"
           data-trigger="hover"
-          data-content="refresh"
+          data-content="hide/show pagination"
           data-placement="bottom">
-          <i class="fas fa-sync-alt"></i>
+          <i class="fas fa-minus-square"></i>
         </button>
-        <button class="btn btn-dark"
+          <button type="button" class="btn btn-dark" id="table-pagi"
           data-toggle="popover"
           data-trigger="hover"
-          data-content="table columns"
+          data-content="hide/show table"
           data-placement="bottom">
-          <i class="fas fa-th"></i></button>
-      </div>
+          <i class="fas fa-table"></i>
+        </button>
+        <button class="btn btn-dark" onclick="return sort();"
+          data-toggle="popover"
+          data-trigger="hover"
+          data-content="sort table"
+          data-placement="bottom">
+          <i class="fas fa-sort"></i>
+        </button>
+          <button type="button" class="btn btn-dark" onclick="refresh()"
+            data-toggle="popover"
+            data-trigger="hover"
+            data-content="refresh"
+            data-placement="bottom">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+          <button class="btn btn-dark"
+            data-toggle="popover"
+            data-trigger="hover"
+            data-content="table columns"
+            data-placement="bottom">
+            <i class="fas fa-th"></i></button>
+        </div>
       </div>
 
   <br><br>
 <!-- Bootstrap Table-->
-  <table class="table table-light table-hover table-bordered table-responsive-md" id="table">
+  <table class="table table-hover table-bordered table-responsive-md" id="table">
     <thead class="thead-light">
       <tr>
         <tr>
