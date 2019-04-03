@@ -47,6 +47,7 @@ if($_GET['p_id']){
   Selecting the Delete button will permanently remove the record from the system.
   </div>
   <form method="post" action="data.php" name="form" id="form">
+  <!--Dropdown Menu-->
   <div class="dropdown">
       <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Dropdown button
@@ -57,6 +58,7 @@ if($_GET['p_id']){
       <?php } ?>
     </div>
   </div>
+  <!--Dropdown Menu-->
   <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$r['parcel_id']?>">
   <div class="form-group">
   <label class="float-md-center" for="Parcel ID">Parcel ID</label>

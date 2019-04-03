@@ -54,7 +54,6 @@ else{
   </div>
 
 <!-- Bootstrap Table Button Groups-->
-
     <div class="form-row float-md-left" id="toolbar">
       <form class="form-group" method="post" action="delete1.php" name="delete">
       <button class="btn btn-danger" name="delete" type="submit" value="submit"
