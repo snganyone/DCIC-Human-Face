@@ -110,7 +110,7 @@
   });
   //Bootstrap alert
   $('.alert').alert();
-  
+
   //Displays error messages
   /*window.onerror = function(msg, url, line) {
                  alert("An error occurred.");
