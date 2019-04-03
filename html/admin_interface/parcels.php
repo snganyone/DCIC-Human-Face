@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
@@ -48,7 +48,7 @@ else{
   ?>
 
 </head>
-<body>
+<body onload="pagination();">
   <div class="section-header">
   <img src="../images/LOGO.png" alt="DCIC Logo">
   </div>
@@ -56,8 +56,8 @@ else{
 <!-- Bootstrap Table Button Groups-->
 
     <div class="form-row float-md-left" id="toolbar">
-      <form class="form-group col" method="post" action="delete1.php" name="delete">
-      <button class="btn btn-danger my-2 my-sm-0" name="delete" type="submit" value="submit"
+      <form class="form-group" method="post" action="delete1.php" name="delete">
+      <button class="btn btn-danger" name="delete" type="submit" value="submit"
       data-toggle="popover"
       title="Delete an Existing Record"
       data-trigger="hover"
@@ -67,8 +67,8 @@ else{
         Delete
       </button>
     </form>
-      <form class="form-group col" action="insert.php" method="post" name="add">
-      <button class="btn btn-success my-2 my-sm-0 octicon-diff-added" type="submit" value="submit"
+      <form class="form-group" action="insert.php" method="post" name="add">
+      <button class="btn btn-success" type="submit" value="submit"
       data-toggle="popover"
       title="Add New Record"
       data-trigger="hover"
@@ -78,7 +78,7 @@ else{
           Add
         </button>
       </form>
-      <form class="form-group col">
+      <form class="form-group">
         <button type="button" class="btn btn-info"
         data-toggle="popover"
         title="Human Face of Big Data Parcel Table Information"
@@ -125,7 +125,7 @@ else{
         data-placement="bottom">
         <i class="fas fa-table"></i>
       </button>
-      <button class="btn btn-dark" onclick="sort()"
+      <button class="btn btn-dark" onclick="return sort();"
         data-toggle="popover"
         data-trigger="hover"
         data-content="sort table"
@@ -157,7 +157,7 @@ else{
         <th scope="col" rowspan="10" class="text-center"></th>
         <th colspan="10" class="text-center">Parcel Information</th>
         </tr>
-        <th class="text-center">Parcel ID <button class="btn btn-link" onclick="sort()"><i class="fas fa-sort"></i></button></th>
+        <th class="text-center">Parcel ID <button class="btn btn-link" onclick="return sort()"><i class="fas fa-sort"></i></button></th>
         <th scope="col" class="text-center">Block Number <button class="btn btn-link" onclick="sort()"><i class="fas fa-sort"></i></button></th>
         <th scope="col" class="text-center">Parcel Number <button class="btn btn-link" onclick="sort()"><i class="fas fa-sort"></i></button></th>
         <th scope="col" class="text-center">Ward Number <button class="btn btn-link" onclick="sort()"><i class="fas fa-sort"></i></button></th>
@@ -195,7 +195,7 @@ else{
 
 <div class="float-md-right paginated-table" id="pagination">
     <pagination class="pagination">
-    <ul class="pagination">
+    <ul class="pagination" onclick="pagination();">
       <!-- Left Arrow -->
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">

@@ -36,14 +36,16 @@ if($p){
   $ia = pg_fetch_assoc($ip);
 
   //Query Event information
-  $event = "SELECT DISTINCT e.event_id, e.response, e.extra_information, e.parcel_id, e.date, e.price, et.type, ep.role, p.name
+  $event = "SELECT DISTINCT e.event_id, e.response, e.extra_information, e.parcel_id, e.date, e.price, et.type
         		FROM humanface.events e
         		JOIN humanface.event_types et ON e.type = et.id
-        		JOIN humanface.event_people_assoc ep ON e.event_id = ep.event_id
-            JOIN humanface.people p ON ep.person_id = p.person_id
-            WHERE e.parcel_id =" . $p . "
-            ORDER BY e.parcel_id, e.event_id";
+            WHERE e.parcel_id = " . $p . "
+            ORDER BY e.event_id";
   $e = pg_query($connect, $event);
+  /*while ($row = pg_fetch_assoc($e)) {
+    echo $row['event_id'];
+    echo "<br>";
+  }*/
   $ea = pg_fetch_assoc($e);
   $event_arr = pg_fetch_array($e);
 
@@ -121,6 +123,8 @@ if($p){
   </div>
 <br><br><br>
 
+
+
   <h2 class="text-center">Event Information</h2>
 
   <?php $count = 1;?>
@@ -132,9 +136,10 @@ if($p){
       <h4>Event <?php echo $count;?></h4>
     </div>
   <div class="form-row">
+    <input class="form-control" type="hidden" value="<?=$n['event_id']?>">
     <div class="form-group col-sm-4">
       <label>Type</label>
-      <input class="form-control" type="text" id="type" name="type" value="<?=$n['type'];?>">
+      <input class="form-control" type="text" id="type" name="type" value="<?=$n['type']?>">
     </div>
     <div class="form-group col-sm-4">
       <label>Date</label>
@@ -155,21 +160,25 @@ if($p){
       <input class="form-control" type="text" id="extra_info" name="extra_info" value="<?=$n['extra_information']?>">
     </div>
   </div>
+<!-- Event-People Association -->
+  <?php ?>
   <div class="form-row">
     <div class="form-group col-sm-6">
     <label>Role</label>
-    <input class="form-control" type="text" id="role" name="role" value="<?=$n['role']?>">
+    <input class="form-control" type="text" id="role" name="role" value="<?=$people['role']?>">
     </div>
     <div class="form-group col-sm-6">
     <label>Name</label>
-    <input class="form-control" type="text" id="name" name="name" value="<?=$n['name']?>">
+    <input class="form-control" type="text" id="name" name="name" value="<?=$people['name']?>">
     </div>
   </div>
   </div>
+<?php ?>
+
   <br><br>
-<?php $count++;}?>
+  <?php $count++; }?>
   <br><br>
-    <br><br>
+
     <div class="text-center">
     <button type="submit" class="btn btn-danger" name="delete" id="delete" onclick="return formsubmit();">Delete</button>
     </div>
