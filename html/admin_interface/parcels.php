@@ -109,8 +109,8 @@ else{
       </div>
 
       <!-- Pagination Bar Button Group -->
-
-      <div align="center" class="btn-group col-4 float-md-right">
+      <div class="text-center">
+      <div align="center" class="btn-group">
         <button type="button" class="btn btn-dark" id="pagi"
         data-toggle="popover"
         data-trigger="hover"
@@ -145,6 +145,7 @@ else{
           data-content="table columns"
           data-placement="bottom">
           <i class="fas fa-th"></i></button>
+      </div>
       </div>
 
   <br><br>
