@@ -48,8 +48,10 @@ if($_GET['p_id']){
   </div>
   <form method="post" action="data.php" name="form" id="form">
   <!--Dropdown Menu-->
-  <div class="dropdown">
-      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <div class="alert">
+  </div>
+  <div class="dropdown text-center">
+      <button type="button" class="btn btn-info dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Dropdown button
       </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
