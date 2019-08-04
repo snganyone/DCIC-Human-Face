@@ -28,17 +28,29 @@ $par = pg_query($connect, $query);
 $row = pg_fetch_all($par);
 
 //Obtain Selected Parcel Information (Parcel ID)
+//$parcel = $_GET['p_id'];
 
 if($_GET['p_id']){
+  //Query Parcel Information
   $u = "SELECT * FROM humanface.parcels WHERE parcel_id = " . $_GET['p_id'];
   $pquery = pg_query($connect, $u);
   $r = pg_fetch_assoc($pquery);
+  //Query Address information
+  $address = "SELECT st_num, st_name'
+              FROM humanface.addresses
+              WHERE parcel_id = " . $_GET['p_id'] . "
+              ORDER BY parcel_id";
+  $query = pg_query($connect, $address);
+  $x = pg_fetch_assoc($query);
+
 }
 
 ?>
-
 </head>
 <body>
+  <?php while($f = pg_fetch_assoc($query)){
+    print_r($f);
+  }?>
   <!-- DCIC Logo -->
   <div class="section-header text-center">
   <img src="../images/LOGO.png" alt="DCIC Logo">
@@ -46,7 +58,7 @@ if($_GET['p_id']){
   <div class="alert alert-danger text-center" role="alert">
   Selecting the Delete button will permanently remove the selected record from the system.
   </div>
-  <form method="post" action="data.php" name="form" id="form">
+  <form method="post" action="data.php" name="form" id="form" style="margin: 0 auto; width: 80%;">
   <!--Dropdown Menu-->
   <div class="dropdown text-center">
       <button type="button" class="btn btn-info dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,31 +70,49 @@ if($_GET['p_id']){
       <?php } ?>
     </div>
   </div>
+  <br>
   <!--Dropdown Menu-->
   <!-- PHP Form -->
   <!-- Parcel Information -->
-  <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$r['parcel_id']?>">
-  <div class="form-group">
-  <label class="float-md-center" for="Parcel ID">Parcel ID</label>
-  <input class="form-control" type="text" id="parcel_id" name="parcel_id" value="<?=$r['parcel_id']?>">
+<div style="border: 1px solid; border-radius: 5px;">
+  <div class="form-row">
+    <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$r['parcel_id']?>">
+    <div class="form-group col-sm-2">
+    <label class="float-md-center" for="Parcel ID">Parcel ID</label>
+    <input class="form-control" type="text" id="parcel_id" name="parcel_id" value="<?=$r['parcel_id']?>">
+    </div>
+    <div class="form-group col-sm-2">
+    <label class="float-md-center" for="block_number">Block Number</label>
+    <input class="form-control" type="text" id="block_number" name="block_number" value="<?=$r['block_no']?>">
+    </div>
+    <div class="form-group col-sm-2">
+    <label class="float-md-center" for="parcel_number">Parcel Number</label>
+    <input class="form-control" type="text" id="parcel_number" name="parcel_number" value="<?=$r['parcel_no']?>">
+    </div>
+    <div class="form-group col-sm-2">
+    <label class="float-md-center" for="ward_number">Ward Number</label>
+    <input class="form-control" type="text" id="ward_number" name="ward_number" value="<?=$r['ward_no']?>">
+    </div>
+    <div class="form-group col-sm-2">
+    <label class="float-md-center" for="land_use">Land Use</label>
+    <input class="form-control" type="text" id="land_use" name="land_use" value="<?=$r['land_use']?>">
+    </div>
   </div>
-  <div class="form-group">
-  <label class="float-md-center" for="block_number">Block Number</label>
-  <input class="form-control" type="text" id="block_number" name="block_number" value="<?=$r['block_no']?>">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+    <label class="float-md-center">Street Number</label>
+    <input class="form-control" type="text" id="st_num" name="st_num" value="<?php echo $x['st_num']; ?>">
+    </div>
+    <div class="form-group col-md-4">
+    <label class="float-md-center">Street Name</label>
+    <input class="form-control">
+    </div>
   </div>
-  <div class="form-group">
-  <label class="float-md-center" for="parcel_number">Parcel Number</label>
-  <input class="form-control" type="text" id="parcel_number" name="parcel_number" value="<?=$r['parcel_no']?>">
-  </div>
-  <div class="form-group">
-  <label class="float-md-center" for="ward_number">Ward Number</label>
-  <input class="form-control" type="text" id="ward_number" name="ward_number" value="<?=$r['ward_no']?>">
-  </div>
-  <div class="form-group">
-  <label class="float-md-center" for="land_use">Land Use</label>
-  <input class="form-control" type="text" id="land_use" name="land_use" value="<?=$r['land_use']?>">
-  </div>
-  <button type="submit" class="btn btn-success" name="delete" id="delete">Submit</button>
+</div>
+    <br>
+  <div class="text-center">
+  <button type="submit" class="btn btn-danger" name="delete" id="delete">Delete</button>
+  <div>
   </form>
 
 <!-- Optional JavaScript -->
