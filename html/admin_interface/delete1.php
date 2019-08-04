@@ -44,15 +44,13 @@ if($_GET['p_id']){
   <img src="../images/LOGO.png" alt="DCIC Logo">
   </div>
   <div class="alert alert-danger text-center" role="alert">
-  Selecting the Delete button will permanently remove the record from the system.
+  Selecting the Delete button will permanently remove the selected record from the system.
   </div>
   <form method="post" action="data.php" name="form" id="form">
   <!--Dropdown Menu-->
-  <div class="alert">
-  </div>
   <div class="dropdown text-center">
       <button type="button" class="btn btn-info dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
+        Parcel ID
       </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <?php foreach($row as $x){ ?>
@@ -61,6 +59,8 @@ if($_GET['p_id']){
     </div>
   </div>
   <!--Dropdown Menu-->
+  <!-- PHP Form -->
+  <!-- Parcel Information -->
   <input id="parcel_id" type="hidden" name="parcel_id" value="<?=$r['parcel_id']?>">
   <div class="form-group">
   <label class="float-md-center" for="Parcel ID">Parcel ID</label>
