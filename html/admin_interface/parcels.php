@@ -224,7 +224,7 @@ else{
     </a>
   </div>
   <div class="footer-section">
-    <p>Administrative Interface for the DCIC Human Face of Big Data Project</p>
+    <p>DCIC: Human Face of Big Data Project</p>
   </div>
 </footer>
 
