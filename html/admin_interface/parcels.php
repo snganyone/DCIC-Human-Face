@@ -90,8 +90,8 @@ else{
           data-placement="top"
           data-content="Select this button to query existing parcel data."
           data-trigger="hover" >
-        <i class="fas fa-search"></i>
-      </button>
+          <i class="fas fa-search"></i>
+          </button>
       </form>
       </div>
 
