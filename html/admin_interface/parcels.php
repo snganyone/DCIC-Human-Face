@@ -55,17 +55,6 @@ else{
 
 <!-- Bootstrap Table Button Groups-->
     <div class="form-row float-md-left" id="toolbar">
-      <form class="form-group" method="post" action="delete1.php" name="delete">
-      <button class="btn btn-danger" name="delete" type="submit" value="submit"
-      data-toggle="popover"
-      title="Delete an Existing Record"
-      data-trigger="hover"
-      data-placement="bottom"
-      data-content="Selecting this button will delete an existing record in the Humanface of Big Data Relational Database">
-        <i class="fas fa-trash-alt"></i>
-        Delete
-      </button>
-    </form>
       <form class="form-group" action="insert.php" method="post" name="add">
       <button class="btn btn-success" type="submit" value="submit"
       data-toggle="popover"
