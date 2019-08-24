@@ -55,7 +55,7 @@ else{
 
 <!-- Bootstrap Table Button Groups-->
     <div class="form-row float-md-left" id="toolbar">
-      <form class="form-group" action="insert.php" method="post" name="add">
+      <form class="form-group col-md" action="insert.php" method="post" name="add">
       <button class="btn btn-success" type="submit" value="submit"
       data-toggle="popover"
       title="Add New Record"
