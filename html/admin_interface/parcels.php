@@ -79,16 +79,18 @@ else{
     </form>
     </div>
 
-      <!-- Search Bar -->
-
-      <div class="float-md-right">
-          <input class="form-control mr-sm-2 float-md-right" type="search" placeholder="Search" name = "search" id="input" onkeyup="filter()">
-          <i class="fas fa-search"></i>
-      </div>
+    <!-- Search Bar -->
+    <!--
+    <div class="float-md-right">
+        <input class="form-control mr-sm-2 float-md-right" type="search" placeholder="Search" name = "search" id="input" onkeyup="filter()">
+        <i class="fas fa-search"></i>
+    </div> -->
 
       <!-- Pagination Bar Button Group -->
-      <div class="text-center">
-        <div align="center" class="btn-group">
+
+      <div class="float-md-right">
+        <div class="btn-group">
+          <input class="form-control mr-sm-2 float-md-right" type="search" placeholder="Search" name = "search" id="input" onkeyup="filter()">
           <button type="button" class="btn btn-dark" id="pagi"
           data-toggle="popover"
           data-trigger="hover"
