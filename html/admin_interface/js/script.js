@@ -73,7 +73,7 @@
             tr[x].style.display = "";
           }
           else{
-            tr[x].style.display = "none";
+            tr[x].style.display = "no";
           }
         }
         }

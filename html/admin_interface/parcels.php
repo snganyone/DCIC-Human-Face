@@ -16,7 +16,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/parcels.css" type="text/css">
 
-  <title>DCIC Human Face of Big Data</title>
+  <title>DCIC: Human Face of Big Data</title>
 
   <?php
   require '../credentials.inc.php';
