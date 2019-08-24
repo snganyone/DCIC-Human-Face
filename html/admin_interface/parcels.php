@@ -82,17 +82,8 @@ else{
       <!-- Search Bar -->
 
       <div class="float-md-right">
-      <form class = "form-inline" name = "form" method="post" action="search.php" onsubmit="return validateForm()">
           <input class="form-control mr-sm-2 float-md-right" type="search" placeholder="Search" name = "search" id="input" onkeyup="filter()">
-          <button class="btn btn-outline-success my-2 my-sm-0" type = "submit" name = "submit" value = "submit"
-          data-toggle="popover"
-          title="Submit"
-          data-placement="top"
-          data-content="Select this button to query existing parcel data."
-          data-trigger="hover" >
           <i class="fas fa-search"></i>
-          </button>
-      </form>
       </div>
 
       <!-- Pagination Bar Button Group -->
