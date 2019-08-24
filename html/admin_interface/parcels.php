@@ -90,7 +90,9 @@ else{
 
       <div class="float-md-right">
         <div class="btn-group">
+        <!-- Search Bar -->
           <input class="form-control mr-sm-2 float-md-right" type="search" placeholder="Search" name = "search" id="input" onkeyup="filter()">
+        <!-- Search Bar -->
           <button type="button" class="btn btn-dark" id="pagi"
           data-toggle="popover"
           data-trigger="hover"
